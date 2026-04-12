@@ -1,7 +1,7 @@
 ---
 name: 🐛 Bug Report
 about: "Template for bug report"
-title: "YYYY-MM-DD: short description"
+title: "The short description"
 labels: "bug"
 assignees:
 ---

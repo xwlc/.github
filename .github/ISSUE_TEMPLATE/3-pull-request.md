@@ -1,7 +1,7 @@
 ---
 name: 👽 Pull Request
 about: "Template for pull request"
-title: "YYYY-MM-DD: short description"
+title: "The short description"
 labels: "enhancement"
 assignees:
 ---

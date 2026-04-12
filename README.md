@@ -1,3 +1,3 @@
 # .github
 
-The default community health files for the @xwlc organization.
+The default community/organization health files.
