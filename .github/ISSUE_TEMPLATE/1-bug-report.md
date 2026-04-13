@@ -1,14 +1,14 @@
 ---
 name: 🐛 Bug Report
-about: "Template for bug report"
-title: "The short description"
-labels: "bug"
+about: Template for bug report
+title: The short description
+labels: bug
 assignees:
 ---
 
-<!-- 🙌 Thanks for your contributing 🎉 -->
+<!--
+🎉 Thank you for filing a bug report!
 
-## Description
-
-<!-- ✍️ Summarize the bug in short -->
-<!-- ❓ How to reproduce the bug -->
+✍️ Summarize the bug in short sentences.
+❓ How to reproduce the bug, and more details.
+-->

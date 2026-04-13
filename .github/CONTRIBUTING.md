@@ -14,12 +14,12 @@ and any kind of contribution is welcome. ✨ 😃 ✨
 ## Prefered Coding Style Conventions
 
 > [!NOTE]
-> [可读性 & 维护性 & 一致性](https://google.github.io/styleguide)
+> [可读性 & 一致性 & 维护性](https://google.github.io/styleguide)
 
 When start reading the code and you'll get the hang of it.
 
 - **ALWAYS** use `UTF-8` encoding.
-- The maximum line length **PREFER** `80` chars.
+- The maximum line length **PREFER** `100` chars.
 - **ALWAYS** indent with `two` spaces, `NO` tabs.
 - The line ending **PREFER** using `LF`, not `CRLF`.
 - The end of file should **ALWAYS** have one empty line.
