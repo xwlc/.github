@@ -7,8 +7,9 @@ assignees:
 ---
 
 <!--
-🎉 Thank you for filing a bug report!
+✍️ 1. Summarize the bug in short sentences.
+💬 2. Which version, context/environment info.
+❓ 3. How to reproduce the bug ?
 
-✍️ Summarize the bug in short sentences.
-❓ How to reproduce the bug, and more details.
+🎉 Thank you for filing a bug report 🎉
 -->

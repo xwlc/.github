@@ -7,10 +7,9 @@ assignees:
 ---
 
 <!--
-🎉 Thanks for your contributing.
-🎉 Your enhancement may already be reported!
-🎉 Search issue tracker before creating new issue.
+❓ 1. Search issue tracker before creating new issue.
+✍️ 2. Summarize the enhancement in short sentences.
+💡 3. How does new feature or enhancement help ?
 
-✍️ Summarize enhancement in short sentences.
-❓ How does new feature or enhancement help.
+🎉 Thanks for your contributing 🎉
 -->
