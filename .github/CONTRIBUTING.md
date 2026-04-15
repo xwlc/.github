@@ -4,7 +4,7 @@ I'm really glad you're reading this, because volunteer developers can help this 
 to the future. Thank you for investing your time in contributing, and any kind of contribution
 is welcome. ✨ 😃 ✨
 
-## Prefered Commit Style
+## [Prefered Commit Style](https://www.conventionalcommits.org/)
 
 ```text
 type(scope): short-description
@@ -14,14 +14,14 @@ HERE-SHOULD-BE-ONE-BLANK-LINE
 optional-footer
 ----------------------------------------------------------------------------
 PATCH 🟢 fix      make backward-compatible bug fixes or patches
-MINOR 🔵 feat     add new functionality in backward-compatible manner
-MAJOR 🔴          type!: OR type(scope)!: correlating with MAJOR
+MINOR 🔵 feat     new functionality in backward-compatible manner
+MAJOR 🔴          type!: OR type(scope)!: for breaking API change
 
-init, docs, style, test/ci, build/deps, perf, refactor, revert, chore/misc
+chore/ci, docs/style, build/deps, refactor/revert, perf/test, fix/feat
 
 🔥 CLOSE: ⋯
+🔥 BREAKING: ⋯
 🔥 KNOWN ISSUE: ⋯
-🔥BREAKING CHANGE: ⋯
 ```
 
 ## Prefered Coding Style Conventions
