@@ -1,4 +1,4 @@
-<div align="center"><h1>GitHub Community Healthy Files Guide</h1></div>
+<div align="center"><h1>GitHub Community Healthy Files</h1></div>
 
 - GitHub Special Repository
   - `<ORG>/<ORG>`  , `<ORG>/.github` , `<ORG>/<ORG>.github.io`
@@ -9,12 +9,8 @@
 - <https://docs.github.com/articles/creating-a-repository-from-a-template>
 
 - <https://docs.github.com/articles/about-issue-and-pull-request-templates>
-- <https://docs.github.com/articles/setting-guidelines-for-repository-contributors>
-
-- <https://github.com/sdras/awesome-actions>
-- <https://docs.github.com/articles/workflow-syntax-for-github-actions>
-- <https://docs.github.com/en/actions/creating-actions/about-custom-actions>
 - <https://docs.github.com/articles/helping-people-contribute-to-your-project>
+- <https://docs.github.com/articles/setting-guidelines-for-repository-contributors>
 
 - <https://docs.github.com/articles/about-codeowners>
 - <https://docs.github.com/en/code-security/dependabot/dependabot-security-updates>
