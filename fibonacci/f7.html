@@ -1,0 +1,156 @@
+<!-- SPDX-License-Identifier: GPL-3.0+ OR Apache-2.0+ OR MIT              -->
+<!-- SPDX-FileCopyrightText: 2023 Charlie WONG <charlie-wong@outlook.com> -->
+<!-- Created By: Charlie WONG 2023-11-24T01:24:13+08:00 Asia/Shanghai     -->
+<!-- Repository: https://github.com/is-std/logo                           -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>斐波那契 | Fibonacci</title>
+</head>
+<body>
+<style>
+div {
+  margin: 5px;
+}
+
+.middle {
+  display: flex;
+  align-items: center; /* 垂直居中 */
+  justify-content: center; /* 横向居中 */
+}
+
+#fibseq {
+  width: 950px;
+  height: 950px;
+  cursor: crosshair;
+  position: relative;
+  border: 1px dashed black;
+  background-color: #f8f8f8;
+}
+</style>
+
+<div class="middle" style="overflow:auto">
+  <div style="float:left">
+    <a>Line Number</a>
+    <input id="LineNum" type="number" min="1" max="1000" placeholder="Integer"/>
+    <button type="button" onclick="downloadIamge()">Download</button>
+  </div>
+  <div style="float:right">
+    <canvas id="fibseq" width="950" height="950"></canvas>
+  </div>
+</div>
+
+<script type="text/javascript">
+  var fibonacci = [0, 1]; // 斐波那契数列数组
+  function getfib(n) {
+    const len = fibonacci.length;
+    if(n < len) return fibonacci[n];
+    for(let i = len; i <= n; i++) { // 计算斐波那契数列
+      fibonacci.push(fibonacci[i-1] + fibonacci[i-2]);
+    }
+    return fibonacci[n];
+  }
+
+  // 绘制斐波那契螺旋线(黄金螺旋线)
+  function drawCurve(size, color) {
+    const ctx = document.getElementById('fibseq').getContext('2d');
+    for(let i = 1; i < size; i++) {
+      const len = getfib(i);
+
+      ctx.strokeStyle = color;
+      if(i < 11) {
+        ctx.strokeStyle = 'transparent';
+      } else if(12 == i) {
+        ctx.lineWidth = 5;
+      } else if(13 == i) {
+        ctx.strokeStyle = 'transparent';
+      } else { // i=14 and i=15
+        ctx.lineWidth = 12;
+      }
+
+      // 画扇形
+      ctx.beginPath();
+      ctx.arc(len, 0, len, Math.PI / 2, 2 * Math.PI / 2);
+      ctx.stroke();
+      // 将原点移到先前原点的对角线上，然后旋转 270 度
+      ctx.translate(len, len);
+      ctx.rotate(3 * Math.PI / 2);
+    }
+  }
+
+  function getRandomNum(min, max) {
+    const range = max - min;
+    const rand = Math.random();
+    return(min + Math.round(rand * range));
+  }
+
+  function getRandomColor() {
+    const R = getRandomNum(0, 255);
+    const G = getRandomNum(0, 255);
+    const B = getRandomNum(0, 255);
+    return 'rgb(' + R + ',' + G + ',' + B + ')';
+  }
+
+  // 绘制多条斐波那契螺旋线
+  function drawLogo() {
+    const MAXFIBLEN = 15; // 斐波那契数列长度
+    const fibseq = document.getElementById('fibseq');
+    const ctx = fibseq.getContext('2d');
+
+    let linenum = parseInt(document.getElementById("LineNum").value, 10);
+    if(linenum <= 0 || isNaN(linenum)) {
+      linenum = 50;
+      document.getElementById("LineNum").value = 50;
+    }
+
+    // 清除画布 clearRect(X, Y, width, height)
+    // 矩形区域左上角坐标(X, Y)及其宽度和高度
+    ctx.clearRect(0, 0, fibseq.width, fibseq.height);
+
+    for(let i = 0; i < linenum; i++) {
+      ctx.save(); // 保存状态
+      // 中心移到画布中间
+      ctx.translate(fibseq.width / 2, fibseq.height / 2);
+      // 依据画的线条数进行适当旋转
+      ctx.rotate(360 / linenum * i * Math.PI / 180);
+      // 绘制黄金螺旋线
+      drawCurve(MAXFIBLEN, getRandomColor());
+      ctx.restore(); // 恢复状态
+    }
+  }
+
+  function getYMDHMS() {
+    const now = new Date();
+    const Y = now.getFullYear();  // 20xx
+    let M = now.getMonth() + 1; // 0 - 11
+    let D = now.getDate();      // 1 - 31
+    let h = now.getHours();     // 0 - 23
+    let m = now.getMinutes();   // 0 - 59
+    let s = now.getSeconds();   // 0 - 59
+
+    M = M.toString().padStart(2, '0');
+    D = D.toString().padStart(2, '0');
+    h = h.toString().padStart(2, '0');
+    m = m.toString().padStart(2, '0');
+    s = s.toString().padStart(2, '0');
+    return Y + M + D + h + m + s;
+  }
+
+  // 图片下载
+  function downloadIamge() {
+    const canvas = document.querySelector('canvas');
+    let a = document.createElement('a');
+    const ln = document.getElementById("LineNum").value;
+    a.download = 'f7@' + ln + '-' + getYMDHMS();
+    a.href = canvas.toDataURL('image/png');
+    a.dispatchEvent(new MouseEvent('click'));
+  }
+
+  document.getElementById('fibseq').onclick = drawLogo;
+  document.getElementById("LineNum").onchange = drawLogo;
+  drawLogo();
+</script>
+
+</body>
+</html>

@@ -1,0 +1,672 @@
+<!-- SPDX-License-Identifier: GPL-3.0+ OR Apache-2.0+ OR MIT              -->
+<!-- SPDX-FileCopyrightText: 2023 Charlie WONG <charlie-wong@outlook.com> -->
+<!-- Created By: Charlie WONG 2023-11-24T01:24:13+08:00 Asia/Shanghai     -->
+<!-- Repository: https://github.com/is-std/logo                           -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>斐波那契 | Fibonacci</title>
+</head>
+<body>
+<style>
+div {
+  margin: 5px;
+}
+
+.middle {
+  display: flex;
+  align-items: center; /* 垂直居中 */
+  justify-content: center; /* 横向居中 */
+}
+
+input[type="text"] {
+  border: none;
+  margin: 0px 3px;
+}
+
+input[type="checkbox"] {
+  margin: 0px 5px;
+}
+
+#fibseq {
+  width: 950px;
+  height: 950px;
+  cursor: crosshair;
+  position: relative;
+  border: 1px dashed black;
+  background-color: #f8f8f8;
+}
+</style>
+
+<div class="middle" style="overflow:auto">
+  <div style="float:left; flex-direction:column; display:flex;">
+    <div id="check-ctrl" style="display: none">
+      <div style="float:left; margin:0px;">
+        <div><button type="button" onclick="checkGroup('L1', 'C')">L1 Ck</button></div>
+        <div><button type="button" onclick="checkGroup('L1', 'U')">L1 UCk</button></div>
+        <div><button type="button" onclick="checkGroup('L2', 'C')">L2 Ck</button></div>
+        <div><button type="button" onclick="checkGroup('L2', 'U')">L2 UCk</button></div>
+
+        <div><button type="button" onclick="checkGroup('M1', 'C')">M1 Ck</button></div>
+        <div><button type="button" onclick="checkGroup('M1', 'U')">M1 UCk</button></div>
+        <div><button type="button" onclick="checkGroup('M2', 'C')">M2 Ck</button></div>
+        <div><button type="button" onclick="checkGroup('M2', 'U')">M2 UCk</button></div>
+
+        <div><button type="button" onclick="checkGroup('R1', 'C')">R1 Ck</button></div>
+        <div><button type="button" onclick="checkGroup('R1', 'U')">R1 UCk</button></div>
+        <div><button type="button" onclick="checkGroup('R2', 'C')">R2 Ck</button></div>
+        <div><button type="button" onclick="checkGroup('R2', 'U')">R2 UCk</button></div>
+
+        <div><button type="button" onclick="checkAll()">A Ck</button></div>
+        <div><button type="button" onclick="unCheckAll()">A UCk</button></div>
+        <div><button type="button" onclick="checkReverse()">RevCk</button></div>
+      </div>
+    </div>
+  </div>
+
+  <div style="float:left; flex-direction:column; display:flex;">
+    <div>
+      <div style="float:left; margin:0px;" id="colorGroupL1">
+        <div class="color"><input type="checkbox" checked=true><input type="text" size=5 value="#ff0000"></div>
+        <div class="color"><input type="checkbox" checked=true><input type="text" size=5 value="#ff00ff"></div>
+        <div class="color"><input type="checkbox" checked=true><input type="text" size=5 value="#ff7f50"></div>
+        <div class="color"><input type="checkbox" checked=true><input type="text" size=5 value="#ffff00"></div>
+        <div class="color"><input type="checkbox" checked=true><input type="text" size=5 value="#7fff00"></div>
+        <div class="color"><input type="checkbox" checked=true><input type="text" size=5 value="#00ff7f"></div>
+        <div class="color"><input type="checkbox" checked=true><input type="text" size=5 value="#00ffff"></div>
+        <div class="color"><input type="checkbox" checked=true><input type="text" size=5 value="#6495ed"></div>
+        <div class="color"><input type="checkbox" checked=true><input type="text" size=5 value="#f5f5f5"></div>
+        <div class="color"><input type="checkbox" checked=true><input type="text" size=5 value="#696969"></div>
+        <div class="color"><input type="checkbox" checked=true><input type="text" size=5 value="#dc143c"></div>
+        <div class="color"><input type="checkbox" checked=true><input type="text" size=5 value="#df11df"></div>
+        <div class="color"><input type="checkbox" checked=true><input type="text" size=5 value="#ff8c00"></div>
+        <div class="color"><input type="checkbox" checked=true><input type="text" size=5 value="#ffd700"></div>
+        <div class="color"><input type="checkbox" checked=true><input type="text" size=5 value="#7cfc00"></div>
+        <div class="color"><input type="checkbox" checked=true><input type="text" size=5 value="#00ff00"></div>
+        <div class="color"><input type="checkbox" checked=true><input type="text" size=5 value="#7fffd4"></div>
+        <div class="color"><input type="checkbox" checked=true><input type="text" size=5 value="#1e90ff"></div>
+        <div class="color"><input type="checkbox" checked=true><input type="text" size=5 value="#ffffe0"></div>
+        <div class="color"><input type="checkbox" checked=true><input type="text" size=5 value="#708090"></div>
+        <div class="color"><input type="checkbox" checked=true><input type="text" size=5 value="#ff7f50"></div>
+        <div class="color"><input type="checkbox" checked=true><input type="text" size=5 value="#ff69b4"></div>
+        <div class="color"><input type="checkbox" checked=true><input type="text" size=5 value="#deb887"></div>
+        <div class="color"><input type="checkbox" checked=true><input type="text" size=5 value="#bdb76b"></div>
+        <div class="color"><input type="checkbox" checked=true><input type="text" size=5 value="#9acd32"></div>
+        <div class="color"><input type="checkbox" checked=true><input type="text" size=5 value="#2e8b57"></div>
+        <div class="color"><input type="checkbox" checked=true><input type="text" size=5 value="#66cdaa"></div>
+        <div class="color"><input type="checkbox" checked=true><input type="text" size=5 value="#add8e6"></div>
+        <div class="color"><input type="checkbox" checked=true><input type="text" size=5 value="#b0e0e6"></div>
+        <div class="color"><input type="checkbox" checked=true><input type="text" size=5 value="#d3d3d3"></div>
+      </div>
+      <div style="float:right; margin:0px;" id="colorGroupL2">
+        <div class="color"><input type="checkbox" checked=true><input type="text" size=5 value="#ff1493"></div>
+        <div class="color"><input type="checkbox" checked=true><input type="text" size=5 value="#8a2be2"></div>
+        <div class="color"><input type="checkbox" checked=true><input type="text" size=5 value="#ffa500"></div>
+        <div class="color"><input type="checkbox" checked=true><input type="text" size=5 value="#fdfe90"></div>
+        <div class="color"><input type="checkbox" checked=true><input type="text" size=5 value="#adff2f"></div>
+        <div class="color"><input type="checkbox" checked=true><input type="text" size=5 value="#32cd32"></div>
+        <div class="color"><input type="checkbox" checked=true><input type="text" size=5 value="#40e0d0"></div>
+        <div class="color"><input type="checkbox" checked=true><input type="text" size=5 value="#009fff"></div>
+        <div class="color"><input type="checkbox" checked=true><input type="text" size=5 value="#ffdab9"></div>
+        <div class="color"><input type="checkbox" checked=true><input type="text" size=5 value="#808080"></div>
+        <div class="color"><input type="checkbox" checked=true><input type="text" size=5 value="#ff4500"></div>
+        <div class="color"><input type="checkbox" checked=true><input type="text" size=5 value="#ba55d3"></div>
+        <div class="color"><input type="checkbox" checked=true><input type="text" size=5 value="#daa520"></div>
+        <div class="color"><input type="checkbox" checked=true><input type="text" size=5 value="#f0e68c"></div>
+        <div class="color"><input type="checkbox" checked=true><input type="text" size=5 value="#90ee90"></div>
+        <div class="color"><input type="checkbox" checked=true><input type="text" size=5 value="#3cb371"></div>
+        <div class="color"><input type="checkbox" checked=true><input type="text" size=5 value="#00ced1"></div>
+        <div class="color"><input type="checkbox" checked=true><input type="text" size=5 value="#00bfff"></div>
+        <div class="color"><input type="checkbox" checked=true><input type="text" size=5 value="#d8bfd8"></div>
+        <div class="color"><input type="checkbox" checked=true><input type="text" size=5 value="#a9a9a9"></div>
+        <div class="color"><input type="checkbox" checked=true><input type="text" size=5 value="#ff6347"></div>
+        <div class="color"><input type="checkbox" checked=true><input type="text" size=5 value="#ee82ee"></div>
+        <div class="color"><input type="checkbox" checked=true><input type="text" size=5 value="#f4a460"></div>
+        <div class="color"><input type="checkbox" checked=true><input type="text" size=5 value="#eee8aa"></div>
+        <div class="color"><input type="checkbox" checked=true><input type="text" size=5 value="#98fb98"></div>
+        <div class="color"><input type="checkbox" checked=true><input type="text" size=5 value="#129a12"></div>
+        <div class="color"><input type="checkbox" checked=true><input type="text" size=5 value="#20b2aa"></div>
+        <div class="color"><input type="checkbox" checked=true><input type="text" size=5 value="#87cefa"></div>
+        <div class="color"><input type="checkbox" checked=true><input type="text" size=5 value="#dda0dd"></div>
+        <div class="color"><input type="checkbox" checked=true><input type="text" size=5 value="#c0c0c0"></div>
+      </div>
+    </div>
+  </div>
+
+  <div style="float:left; flex-direction:column; display:flex;">
+    <div style="text-align:center">
+      <a style="color:blue;" href="https://rgb.to/html-color-codes" target="_blank">HTML Color Codes</a>
+    </div>
+    <div style="text-align:center;" id="ctrl">
+      <input type="checkbox" checked=true id="fixed">
+      <a id="one-by-one">依次轮流</a>
+      <a id="show-gencnt-step"></a>
+    </div>
+    <div style="text-align:center;">
+      <a>开始</a>
+      <input id="R1" type="number" min="0" max="255" value=5 placeholder="R" style="width:45px"/>
+      <input id="G1" type="number" min="0" max="255" value=10 placeholder="G" style="width:45px"/>
+      <input id="B1" type="number" min="0" max="255" value=15 placeholder="B" style="width:45px"/>
+      <button type="button" onclick="updateColorTable()">生成</button>
+    </div>
+    <div style="text-align:center;">
+      <a>步进</a>
+      <input id="R2" type="number" min="0" max="255" value=10 placeholder="R"/>
+      <input id="G2" type="number" min="0" max="255" value=20 placeholder="G"/>
+      <input id="B2" type="number" min="0" max="255" value=30 placeholder="B"/>
+    </div>
+    <div>
+      <div style="float:left; margin:0px;" id="colorGroupM1">
+        <div class="color"><input type="checkbox" checked=true><input type="text" size=5 value="#ff0000"></div>
+        <div class="color"><input type="checkbox" checked=true><input type="text" size=5 value="#ff00ff"></div>
+        <div class="color"><input type="checkbox" checked=true><input type="text" size=5 value="#ff7f50"></div>
+        <div class="color"><input type="checkbox" checked=true><input type="text" size=5 value="#ffff00"></div>
+        <div class="color"><input type="checkbox" checked=true><input type="text" size=5 value="#7fff00"></div>
+        <div class="color"><input type="checkbox" checked=true><input type="text" size=5 value="#00ff7f"></div>
+        <div class="color"><input type="checkbox" checked=true><input type="text" size=5 value="#00ffff"></div>
+        <div class="color"><input type="checkbox" checked=true><input type="text" size=5 value="#6495ed"></div>
+        <div class="color"><input type="checkbox" checked=true><input type="text" size=5 value="#f5f5f5"></div>
+        <div class="color"><input type="checkbox" checked=true><input type="text" size=5 value="#696969"></div>
+        <div class="color"><input type="checkbox" checked=true><input type="text" size=5 value="#dc143c"></div>
+        <div class="color"><input type="checkbox" checked=true><input type="text" size=5 value="#df11df"></div>
+        <div class="color"><input type="checkbox" checked=true><input type="text" size=5 value="#ff8c00"></div>
+        <div class="color"><input type="checkbox" checked=true><input type="text" size=5 value="#ffd700"></div>
+        <div class="color"><input type="checkbox" checked=true><input type="text" size=5 value="#7cfc00"></div>
+        <div class="color"><input type="checkbox" checked=true><input type="text" size=5 value="#00ff00"></div>
+        <div class="color"><input type="checkbox" checked=true><input type="text" size=5 value="#7fffd4"></div>
+        <div class="color"><input type="checkbox" checked=true><input type="text" size=5 value="#1e90ff"></div>
+        <div class="color"><input type="checkbox" checked=true><input type="text" size=5 value="#ffffe0"></div>
+        <div class="color"><input type="checkbox" checked=true><input type="text" size=5 value="#708090"></div>
+        <div class="color"><input type="checkbox" checked=true><input type="text" size=5 value="#ff7f50"></div>
+        <div class="color"><input type="checkbox" checked=true><input type="text" size=5 value="#ff69b4"></div>
+        <div class="color"><input type="checkbox" checked=true><input type="text" size=5 value="#deb887"></div>
+        <div class="color"><input type="checkbox" checked=true><input type="text" size=5 value="#bdb76b"></div>
+        <div class="color"><input type="checkbox" checked=true><input type="text" size=5 value="#9acd32"></div>
+        <div class="color"><input type="checkbox" checked=true><input type="text" size=5 value="#2e8b57"></div>
+        <div class="color"><input type="checkbox" checked=true><input type="text" size=5 value="#66cdaa"></div>
+        <div class="color"><input type="checkbox" checked=true><input type="text" size=5 value="#add8e6"></div>
+        <div class="color"><input type="checkbox" checked=true><input type="text" size=5 value="#b0e0e6"></div>
+        <div class="color"><input type="checkbox" checked=true><input type="text" size=5 value="#d3d3d3"></div>
+      </div>
+      <div style="float:right; margin:0px;" id="colorGroupM2">
+        <div class="color"><input type="checkbox" checked=true><input type="text" size=5 value="#ff1493"></div>
+        <div class="color"><input type="checkbox" checked=true><input type="text" size=5 value="#8a2be2"></div>
+        <div class="color"><input type="checkbox" checked=true><input type="text" size=5 value="#ffa500"></div>
+        <div class="color"><input type="checkbox" checked=true><input type="text" size=5 value="#fdfe90"></div>
+        <div class="color"><input type="checkbox" checked=true><input type="text" size=5 value="#adff2f"></div>
+        <div class="color"><input type="checkbox" checked=true><input type="text" size=5 value="#32cd32"></div>
+        <div class="color"><input type="checkbox" checked=true><input type="text" size=5 value="#40e0d0"></div>
+        <div class="color"><input type="checkbox" checked=true><input type="text" size=5 value="#009fff"></div>
+        <div class="color"><input type="checkbox" checked=true><input type="text" size=5 value="#ffdab9"></div>
+        <div class="color"><input type="checkbox" checked=true><input type="text" size=5 value="#808080"></div>
+        <div class="color"><input type="checkbox" checked=true><input type="text" size=5 value="#ff4500"></div>
+        <div class="color"><input type="checkbox" checked=true><input type="text" size=5 value="#ba55d3"></div>
+        <div class="color"><input type="checkbox" checked=true><input type="text" size=5 value="#daa520"></div>
+        <div class="color"><input type="checkbox" checked=true><input type="text" size=5 value="#f0e68c"></div>
+        <div class="color"><input type="checkbox" checked=true><input type="text" size=5 value="#90ee90"></div>
+        <div class="color"><input type="checkbox" checked=true><input type="text" size=5 value="#3cb371"></div>
+        <div class="color"><input type="checkbox" checked=true><input type="text" size=5 value="#00ced1"></div>
+        <div class="color"><input type="checkbox" checked=true><input type="text" size=5 value="#00bfff"></div>
+        <div class="color"><input type="checkbox" checked=true><input type="text" size=5 value="#d8bfd8"></div>
+        <div class="color"><input type="checkbox" checked=true><input type="text" size=5 value="#a9a9a9"></div>
+        <div class="color"><input type="checkbox" checked=true><input type="text" size=5 value="#ff6347"></div>
+        <div class="color"><input type="checkbox" checked=true><input type="text" size=5 value="#ee82ee"></div>
+        <div class="color"><input type="checkbox" checked=true><input type="text" size=5 value="#f4a460"></div>
+        <div class="color"><input type="checkbox" checked=true><input type="text" size=5 value="#eee8aa"></div>
+        <div class="color"><input type="checkbox" checked=true><input type="text" size=5 value="#98fb98"></div>
+        <div class="color"><input type="checkbox" checked=true><input type="text" size=5 value="#129a12"></div>
+        <div class="color"><input type="checkbox" checked=true><input type="text" size=5 value="#20b2aa"></div>
+        <div class="color"><input type="checkbox" checked=true><input type="text" size=5 value="#87cefa"></div>
+        <div class="color"><input type="checkbox" checked=true><input type="text" size=5 value="#dda0dd"></div>
+        <div class="color"><input type="checkbox" checked=true><input type="text" size=5 value="#c0c0c0"></div>
+      </div>
+    </div>
+    <div>
+      <a>Line Number</a>
+      <input id="LineNum" type="number" min="1" max="1000" placeholder="Integer"/>
+      <button type="button" onclick="downloadIamge()">Download</button>
+    </div>
+  </div>
+
+  <div style="float:right">
+    <canvas id="fibseq" width="950" height="950"></canvas>
+  </div>
+
+  <div style="float:left; flex-direction:column; display:flex;">
+    <div>
+      <div style="float:left; margin:0px;" id="colorGroupR1">
+        <div class="color"><input type="checkbox" checked=true><input type="text" size=5 value="#ff0000"></div>
+        <div class="color"><input type="checkbox" checked=true><input type="text" size=5 value="#ff00ff"></div>
+        <div class="color"><input type="checkbox" checked=true><input type="text" size=5 value="#ff7f50"></div>
+        <div class="color"><input type="checkbox" checked=true><input type="text" size=5 value="#ffff00"></div>
+        <div class="color"><input type="checkbox" checked=true><input type="text" size=5 value="#7fff00"></div>
+        <div class="color"><input type="checkbox" checked=true><input type="text" size=5 value="#00ff7f"></div>
+        <div class="color"><input type="checkbox" checked=true><input type="text" size=5 value="#00ffff"></div>
+        <div class="color"><input type="checkbox" checked=true><input type="text" size=5 value="#6495ed"></div>
+        <div class="color"><input type="checkbox" checked=true><input type="text" size=5 value="#f5f5f5"></div>
+        <div class="color"><input type="checkbox" checked=true><input type="text" size=5 value="#696969"></div>
+        <div class="color"><input type="checkbox" checked=true><input type="text" size=5 value="#dc143c"></div>
+        <div class="color"><input type="checkbox" checked=true><input type="text" size=5 value="#df11df"></div>
+        <div class="color"><input type="checkbox" checked=true><input type="text" size=5 value="#ff8c00"></div>
+        <div class="color"><input type="checkbox" checked=true><input type="text" size=5 value="#ffd700"></div>
+        <div class="color"><input type="checkbox" checked=true><input type="text" size=5 value="#7cfc00"></div>
+        <div class="color"><input type="checkbox" checked=true><input type="text" size=5 value="#00ff00"></div>
+        <div class="color"><input type="checkbox" checked=true><input type="text" size=5 value="#7fffd4"></div>
+        <div class="color"><input type="checkbox" checked=true><input type="text" size=5 value="#1e90ff"></div>
+        <div class="color"><input type="checkbox" checked=true><input type="text" size=5 value="#ffffe0"></div>
+        <div class="color"><input type="checkbox" checked=true><input type="text" size=5 value="#708090"></div>
+        <div class="color"><input type="checkbox" checked=true><input type="text" size=5 value="#ff7f50"></div>
+        <div class="color"><input type="checkbox" checked=true><input type="text" size=5 value="#ff69b4"></div>
+        <div class="color"><input type="checkbox" checked=true><input type="text" size=5 value="#deb887"></div>
+        <div class="color"><input type="checkbox" checked=true><input type="text" size=5 value="#bdb76b"></div>
+        <div class="color"><input type="checkbox" checked=true><input type="text" size=5 value="#9acd32"></div>
+        <div class="color"><input type="checkbox" checked=true><input type="text" size=5 value="#2e8b57"></div>
+        <div class="color"><input type="checkbox" checked=true><input type="text" size=5 value="#66cdaa"></div>
+        <div class="color"><input type="checkbox" checked=true><input type="text" size=5 value="#add8e6"></div>
+        <div class="color"><input type="checkbox" checked=true><input type="text" size=5 value="#b0e0e6"></div>
+        <div class="color"><input type="checkbox" checked=true><input type="text" size=5 value="#d3d3d3"></div>
+      </div>
+      <div style="float:right; margin:0px;" id="colorGroupR2">
+        <div class="color"><input type="checkbox" checked=true><input type="text" size=5 value="#ff1493"></div>
+        <div class="color"><input type="checkbox" checked=true><input type="text" size=5 value="#8a2be2"></div>
+        <div class="color"><input type="checkbox" checked=true><input type="text" size=5 value="#ffa500"></div>
+        <div class="color"><input type="checkbox" checked=true><input type="text" size=5 value="#fdfe90"></div>
+        <div class="color"><input type="checkbox" checked=true><input type="text" size=5 value="#adff2f"></div>
+        <div class="color"><input type="checkbox" checked=true><input type="text" size=5 value="#32cd32"></div>
+        <div class="color"><input type="checkbox" checked=true><input type="text" size=5 value="#40e0d0"></div>
+        <div class="color"><input type="checkbox" checked=true><input type="text" size=5 value="#009fff"></div>
+        <div class="color"><input type="checkbox" checked=true><input type="text" size=5 value="#ffdab9"></div>
+        <div class="color"><input type="checkbox" checked=true><input type="text" size=5 value="#808080"></div>
+        <div class="color"><input type="checkbox" checked=true><input type="text" size=5 value="#ff4500"></div>
+        <div class="color"><input type="checkbox" checked=true><input type="text" size=5 value="#ba55d3"></div>
+        <div class="color"><input type="checkbox" checked=true><input type="text" size=5 value="#daa520"></div>
+        <div class="color"><input type="checkbox" checked=true><input type="text" size=5 value="#f0e68c"></div>
+        <div class="color"><input type="checkbox" checked=true><input type="text" size=5 value="#90ee90"></div>
+        <div class="color"><input type="checkbox" checked=true><input type="text" size=5 value="#3cb371"></div>
+        <div class="color"><input type="checkbox" checked=true><input type="text" size=5 value="#00ced1"></div>
+        <div class="color"><input type="checkbox" checked=true><input type="text" size=5 value="#00bfff"></div>
+        <div class="color"><input type="checkbox" checked=true><input type="text" size=5 value="#d8bfd8"></div>
+        <div class="color"><input type="checkbox" checked=true><input type="text" size=5 value="#a9a9a9"></div>
+        <div class="color"><input type="checkbox" checked=true><input type="text" size=5 value="#ff6347"></div>
+        <div class="color"><input type="checkbox" checked=true><input type="text" size=5 value="#ee82ee"></div>
+        <div class="color"><input type="checkbox" checked=true><input type="text" size=5 value="#f4a460"></div>
+        <div class="color"><input type="checkbox" checked=true><input type="text" size=5 value="#eee8aa"></div>
+        <div class="color"><input type="checkbox" checked=true><input type="text" size=5 value="#98fb98"></div>
+        <div class="color"><input type="checkbox" checked=true><input type="text" size=5 value="#129a12"></div>
+        <div class="color"><input type="checkbox" checked=true><input type="text" size=5 value="#20b2aa"></div>
+        <div class="color"><input type="checkbox" checked=true><input type="text" size=5 value="#87cefa"></div>
+        <div class="color"><input type="checkbox" checked=true><input type="text" size=5 value="#dda0dd"></div>
+        <div class="color"><input type="checkbox" checked=true><input type="text" size=5 value="#c0c0c0"></div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<script type="text/javascript">
+  const DEFAULT_LINE_COUNT = 60;
+  const PRE_COL_MAX_ITEM_E = 36;
+  const PRE_COL_MAX_ITEM_M = 30;
+
+  // 首次加载清空左右颜色列表
+  (function() {
+    document.getElementById("colorGroupL1").innerHTML='';
+    document.getElementById("colorGroupL2").innerHTML='';
+    document.getElementById("colorGroupR1").innerHTML='';
+    document.getElementById("colorGroupR2").innerHTML='';
+  })();
+
+  function initColorCtrl() {
+    function randomFixedOneByOne() {
+      if(document.getElementById('fixed').checked) {
+        document.getElementById('one-by-one').style = "color: deeppink";
+      } else {
+        document.getElementById('one-by-one').style = "color: grey";
+      }
+    }
+    randomFixedOneByOne();
+    document.getElementById('fixed').onclick = randomFixedOneByOne;
+
+    let colors = document.getElementsByClassName('color')
+    for(let i = 0; i < colors.length; i++) {
+      let div = colors[i];
+      const fc = div.firstElementChild;
+      let lv = div.lastElementChild;
+      if(fc.checked) {
+        div.style = "background-color: " + lv.value;
+        lv.style = "background-color: " + lv.value;
+      }
+      lv.onchange = () => {
+        if(fc.checked) {
+          div.style = "background-color: " + lv.value;
+          lv.style = "background-color: " + lv.value;
+        }
+      }
+    }
+  }
+  initColorCtrl();
+
+  function checkAll() {
+    let colors = document.getElementsByClassName('color')
+    for(let i = 0; i < colors.length; i++) {
+      colors[i].firstElementChild.checked = true;
+    }
+  }
+
+  function unCheckAll() {
+    let colors = document.getElementsByClassName('color')
+    for(let i = 0; i < colors.length; i++) {
+      colors[i].firstElementChild.checked = false;
+    }
+  }
+
+  function checkReverse() {
+    let colors = document.getElementsByClassName('color')
+    for(let i = 0; i < colors.length; i++) {
+      if(colors[i].firstElementChild.checked) {
+        colors[i].firstElementChild.checked = false;
+      } else {
+        colors[i].firstElementChild.checked = true;
+      }
+    }
+  }
+
+  function checkGroup(group, what) {
+    let items = null;
+    let checked = true;
+    if(what == 'U') checked = false;
+
+    if(group == 'L1')       items = document.getElementById("colorGroupL1");
+    else if(group == 'L2')  items = document.getElementById("colorGroupL2");
+    else if(group == 'M1')  items = document.getElementById("colorGroupM1");
+    else if(group == 'M2')  items = document.getElementById("colorGroupM2");
+    else if(group == 'R1')  items = document.getElementById("colorGroupR1");
+    else if(group == 'R2')  items = document.getElementById("colorGroupR2");
+    else return;
+
+    let colors = items.getElementsByClassName('color');
+    if(!colors) return;
+
+    for(let i = 0; i < colors.length; i++) {
+      colors[i].firstElementChild.checked = checked;
+    }
+  }
+
+
+  function updateColorTable() {
+    if(!document.getElementById('fixed').checked) {
+      drawLogo();
+      return;
+    }
+
+    const R1 = parseInt(document.getElementById("R1").value, 10); // 起始值
+    const G1 = parseInt(document.getElementById("G1").value, 10);
+    const B1 = parseInt(document.getElementById("B1").value, 10);
+    const R2 = parseInt(document.getElementById("R2").value, 10); // 步进值
+    const G2 = parseInt(document.getElementById("G2").value, 10);
+    const B2 = parseInt(document.getElementById("B2").value, 10);
+
+    let colors = [];
+    for(let r = R1; r < 256; r+= R2) {
+      for(let g = G1; g < 256; g+= G2) {
+        for(let b = B1; b < 256; b+= B2) {
+          let hexR = r.toString(16).padStart(2, '0');
+          let hexG = g.toString(16).padStart(2, '0');
+          let hexB = b.toString(16).padStart(2, '0');
+          colors.push('#' + hexR + hexG + hexB);
+        }
+      }
+    }
+
+    const MAX1 = PRE_COL_MAX_ITEM_E;
+    const MAX2 = PRE_COL_MAX_ITEM_E * 2;
+
+    const MAX3 = MAX2 + PRE_COL_MAX_ITEM_M;
+    const MAX4 = MAX2 + PRE_COL_MAX_ITEM_M * 2;
+
+    const MAX5 = MAX4 + PRE_COL_MAX_ITEM_E;
+    const MAX6 = MAX4 + PRE_COL_MAX_ITEM_E * 2;
+
+    let STEP = 1;
+    if(colors.length <= MAX6) STEP = 1;
+    else if(colors.length <= MAX6 * 2) STEP = 2;
+    else if(colors.length <= MAX6 * 3) STEP = 3;
+    else if(colors.length <= MAX6 * 4) STEP = 4;
+    else if(colors.length <= MAX6 * 5) STEP = 5;
+    else if(colors.length <= MAX6 * 6) STEP = 6;
+    else if(colors.length <= MAX6 * 7) STEP = 7;
+    else STEP = 8;
+
+    let step_extra = document.getElementById("step-extra");
+    if(step_extra && !isNaN(parseInt(step_extra.value, 10))) {
+      STEP += parseInt(step_extra.value, 10);
+    }
+
+    let cg1 = document.getElementById("colorGroupL1");
+    let cg2 = document.getElementById("colorGroupL2");
+    cg1.innerHTML=''; cg2.innerHTML=''; // 清空重置
+
+    let show_cnt = -1;
+    // <input type="checkbox" checked=true>
+    //<input type="text" size=5 value="#ff0000">
+    for(let i=0; i < colors.length; i += STEP) {
+      show_cnt++;
+
+      let div = document.createElement('div');
+      div.setAttribute('class', 'color');
+
+      let checkbox = document.createElement('input');
+      checkbox.setAttribute('type', 'checkbox');
+      checkbox.setAttribute('checked', 'true');
+      div.appendChild(checkbox);
+
+      let text = document.createElement('input');
+      text.setAttribute('type', 'text');
+      text.setAttribute('size', '5');
+      text.setAttribute('value', colors[i]);
+      div.appendChild(text);
+
+      if(show_cnt < MAX1) {           // L1
+        cg1.appendChild(div);
+      } else if(show_cnt < MAX2) {    // L2
+        if(show_cnt == MAX1) {
+          cg1 = document.getElementById("colorGroupM1");
+          cg1.innerHTML='';
+        }
+        cg2.appendChild(div);
+      } else if(show_cnt < MAX3) {    // M1
+        if(show_cnt == MAX2) {
+          cg2 = document.getElementById("colorGroupM2");
+          cg2.innerHTML='';
+        }
+        cg1.appendChild(div);
+      } else if(show_cnt < MAX4) {    // M2
+        if(show_cnt == MAX3) {
+          cg1 = document.getElementById("colorGroupR1");
+          cg1.innerHTML='';
+        }
+        cg2.appendChild(div);
+      } else if(show_cnt < MAX5) {    // R1
+        if(show_cnt == MAX4) {
+          cg2 = document.getElementById("colorGroupR2");
+          cg2.innerHTML='';
+        }
+        cg1.appendChild(div);
+      } else if(show_cnt < MAX6) {    // R2
+        cg2.appendChild(div);
+      }
+    }
+    show_cnt++;
+
+    let show_gencnt_step = document.getElementById("show-gencnt-step");
+    show_gencnt_step.innerHTML = show_cnt + '/' + colors.length + '/' + STEP;
+
+    let old_value = ' ';
+    let ctrl = document.getElementById("ctrl");
+    step_extra = document.getElementById("step-extra");
+    if(step_extra) {
+      old_value = step_extra.value;
+      ctrl.removeChild(step_extra);
+    }
+    step_extra = document.createElement('input');
+    step_extra.setAttribute('id', 'step-extra');
+    step_extra.setAttribute('type', 'number');
+    step_extra.setAttribute('placeholder', 'SE');
+    step_extra.setAttribute('style', 'width:50px');
+    if(old_value != '' ) step_extra.setAttribute('value', old_value);
+    ctrl.appendChild(step_extra);
+
+    document.getElementById("check-ctrl").style = "display: flex";
+
+    initColorCtrl();
+    drawLogo();
+  }
+
+  function getColors() {
+    let data = [];
+    let colors = document.getElementsByClassName('color')
+    for(let i = 0; i < colors.length; i++) {
+      if(colors[i].firstElementChild.checked) {
+        data.push(colors[i].lastElementChild.value);
+      }
+    }
+    return data;
+  }
+
+  var fibonacci = [0, 1]; // 斐波那契数列数组
+  function getfib(n) {
+    const len = fibonacci.length;
+    if(n < len) return fibonacci[n];
+    for(let i = len; i <= n; i++) { // 计算斐波那契数列
+      fibonacci.push(fibonacci[i-1] + fibonacci[i-2]);
+    }
+    return fibonacci[n];
+  }
+
+  // 绘制斐波那契螺旋线(黄金螺旋线)
+  function drawCurve(size, color) {
+    const ctx = document.getElementById('fibseq').getContext('2d');
+    for(let i = 1; i < size; i++) {
+      const len = getfib(i);
+
+      ctx.strokeStyle = color;
+      if(i < 10) {
+        ctx.lineWidth = 1;
+        if(i%2 == 1) ctx.strokeStyle = 'transparent';
+      } else if(10 == i) {
+        ctx.lineWidth = 1;
+      } else if(11 == i) {
+        ctx.strokeStyle = 'transparent';
+      } else if(12 == i) {
+        ctx.lineWidth = 4;
+      } else if(13 == i) {
+        ctx.strokeStyle = 'transparent';
+      } else { // i=14
+        ctx.lineWidth = 8;
+      }
+
+      // 画扇形
+      ctx.beginPath();
+      ctx.arc(len, 0, len, Math.PI / 2, 2 * Math.PI / 2);
+      ctx.stroke();
+      // 将原点移到先前原点的对角线上，然后旋转 270 度
+      ctx.translate(len, len);
+      ctx.rotate(3 * Math.PI / 2);
+    }
+  }
+
+  function getRandomNum(min, max) {
+    const range = max - min;
+    const rand = Math.random();
+    return(min + Math.round(rand * range));
+  }
+
+  function getRandomColor() {
+    const R = getRandomNum(0, 255);
+    const G = getRandomNum(0, 255);
+    const B = getRandomNum(0, 255);
+    return 'rgb(' + R + ',' + G + ',' + B + ')';
+  }
+
+  // 绘制多条斐波那契螺旋线
+  function drawLogo() {
+    const MAXFIBLEN = 15; // 斐波那契数列长度
+    const fibseq = document.getElementById('fibseq');
+    const ctx = fibseq.getContext('2d');
+
+    let linenum = parseInt(document.getElementById("LineNum").value, 10);
+    if(linenum <= 0 || isNaN(linenum)) {
+      linenum = DEFAULT_LINE_COUNT;
+      document.getElementById("LineNum").value = DEFAULT_LINE_COUNT;
+    }
+
+    // 清除画布 clearRect(X, Y, width, height)
+    // 矩形区域左上角坐标(X, Y)及其宽度和高度
+    ctx.clearRect(0, 0, fibseq.width, fibseq.height);
+
+    const colors = getColors();
+    let fixedOneByOne = document.getElementById('fixed').checked;
+    if(colors.length == 0) {
+      fixedOneByOne = false;
+    }
+    let colorid = 0;
+    function getNextFixedColor() {
+      if(colorid >= colors.length) {
+        colorid = 0;
+      }
+      return colors[colorid++];
+    }
+
+    for(let i = 0; i < linenum; i++) {
+      ctx.save(); // 保存状态
+      // 中心移到画布中间
+      ctx.translate(fibseq.width / 2, fibseq.height / 2);
+      // 依据画的线条数进行适当旋转
+      ctx.rotate(360 / linenum * i * Math.PI / 180);
+
+      // 绘制黄金螺旋线
+      if(fixedOneByOne) {
+        drawCurve(MAXFIBLEN, getNextFixedColor());
+      } else {
+        drawCurve(MAXFIBLEN, getRandomColor());
+      }
+
+      ctx.restore(); // 恢复状态
+    }
+  }
+
+  function getYMDHMS() {
+    const now = new Date();
+    const Y = now.getFullYear();  // 20xx
+    let M = now.getMonth() + 1; // 0 - 11
+    let D = now.getDate();      // 1 - 31
+    let h = now.getHours();     // 0 - 23
+    let m = now.getMinutes();   // 0 - 59
+    let s = now.getSeconds();   // 0 - 59
+
+    M = M.toString().padStart(2, '0');
+    D = D.toString().padStart(2, '0');
+    h = h.toString().padStart(2, '0');
+    m = m.toString().padStart(2, '0');
+    s = s.toString().padStart(2, '0');
+    return Y + M + D + h + m + s;
+  }
+
+  // 图片下载
+  function downloadIamge() {
+    const canvas = document.querySelector('canvas');
+    let a = document.createElement('a');
+    const ln = document.getElementById("LineNum").value;
+    a.download = 'f9@' + ln + '-' + getYMDHMS();
+    a.href = canvas.toDataURL('image/png');
+    a.dispatchEvent(new MouseEvent('click'));
+  }
+
+  document.getElementById('fibseq').onclick = drawLogo;
+  document.getElementById("LineNum").onchange = drawLogo;
+  drawLogo();
+</script>
+
+</body>
+</html>
