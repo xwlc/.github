@@ -1,10 +1,11 @@
 # Welcome to the Contributing Guide
 
-I'm really glad you're reading this, because volunteer developers can help this project come
-to the future. Thank you for investing your time in contributing, and any kind of contribution
-is welcome. ✨ 😃 ✨
+I'm really glad you're reading this, because volunteer developers can help this project come to the
+future. Thank you for investing your time in contributing, and any kind of contribution is welcome.
 
-## [Prefered Commit Style](https://www.conventionalcommits.org/)
+## Commit Style Conventions
+
+- <https://www.conventionalcommits.org>
 
 ```text
 type(scope): short-description
@@ -24,49 +25,24 @@ chore/ci, docs/style, build/deps, refactor/revert, perf/test, fix/feat
 🔥 KNOWN ISSUE: ⋯
 ```
 
-## Prefered Coding Style Conventions
+## Coding Style Conventions
 
-> [!NOTE]
-> [Readability & Consistency & maintainability](https://google.github.io/styleguide)
+- <https://google.github.io/styleguide>
+- Readability & Consistency & Maintainability
+- <https://zh-google-styleguide.readthedocs.io/en/latest/>
 
 When start reading the code and you'll get the hang of it.
 
-- **ALWAYS** use `UTF-8` encoding.
-- The maximum line length **PREFER** `100` chars.
+- **ALWAYS** use `UTF-8` encoding, `NO` BOM.
 - **ALWAYS** indent with `two` spaces, `NO` tabs.
+- The maximum line length **PREFER** `100` chars.
 - The line ending **PREFER** using `LF`, not `CRLF`.
 - The end of file should **ALWAYS** have one empty line.
 - **ALWAYS** make sure no-trailing whitespace to the end of line.
-- **PREFER** `cwd-relative` paths rather than `root-relative` paths in image URLs.
 - Look around and make consistent changes with the around coding style.
 - Consider the people who will read your code, and make it look nice for them.
 
-## [Markdown Best Practices](https://www.tomarkdown.org/guides/markdown-best-practice)
-
-- Headings should be surrounded by single blank lines.
-- Use proper heading levels, each doc only one H1, and H2 for major sections.
-- Heading use `#`, capitalizing principal words, lowercase articles/prepositions.
-
-- Paragraphs should be separated by single blank lines.
-- Chinese articles **PREFER** using Chinese punctuation and vice versa.
-- The TOC should appear after the introduction but before the main content.
-- Organize content with sections, paragraph length moderate, logical connections.
-- In mixed-language articles, English words should be spaced appropriately for readability.
-
-- Use double asterisks `**` for bold text.
-- Strikethrough should use double tildes `~~`
-- Unordered lists use hyphens `-`, numbers with periods for ordered lists.
-- Lists should be surrounded by blank lines, but items usually no separation.
-
-- Blockquotes should also be surrounded by blank lines.
-- Horizontal rules `---` separate major document sections.
-- Link syntax should prioritize inline format if not so long.
-- Blockquotes `>` highlight important info or external quotes.
-
-## Contributing
-
-> [!NOTE]
-> Please remember to search Issues/PRs first.
+## Bug Report and Pull Request
 
 - If you spot a problem, you can fill a **Bug Report**
 - If you find document type error, fix it and **Pull Request**
