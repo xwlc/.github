@@ -1,9 +1,8 @@
-<div align="center"><h1>GitHub Community Healthy Files</h1></div>
+<div align="center"><h1>About GitHub Special Repository and Files</h1></div>
 
-- GitHub Special Repository
-  - `<ORG>/<ORG>`  , `<ORG>/.github` , `<ORG>/<ORG>.github.io`
-  - `<USER>/<USER>`, `<USER>/.github`, `<USER>/<USER>.github.io`
-  - Priority `<REPO>/.github/` > `<REPO>/` > `<REPO>/docs/` > fallback `.github`
+- `<ORG>/<ORG>`  , `<ORG>/.github` , `<ORG>/<ORG>.github.io`
+- `<USER>/<USER>`, `<USER>/.github`, `<USER>/<USER>.github.io`
+- Priority `<REPO>/.github/` > `<REPO>/` > `<REPO>/docs/` > fallback to `<ORG>/.github` repo
 
 - <https://docs.github.com/articles/creating-a-template-repository>
 - <https://docs.github.com/articles/creating-a-repository-from-a-template>
